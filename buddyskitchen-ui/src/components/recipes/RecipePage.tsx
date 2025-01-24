@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Button, Spinner } from 'react-bootstrap';
-import { getAllRecipes, saveRecipe } from '../services/apiService';
-import { Recipe } from '../types/types';
+import { Button, Spinner, Toast } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import RecipeCard from './RecipeCard';
+import { getAllRecipes, saveRecipe } from '../../services/apiService';
+import { Recipe } from '../../types/types';
 
 const Recipes = () => {
+    const navigate = useNavigate();
     const [recipes, setRecipes] = useState<Recipe[] | null>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -16,6 +18,7 @@ const Recipes = () => {
         const result = await getAllRecipes();
         if (result.status !== 200) {
             setLoading(false);
+            setRecipes(null);
             return;
         }
 
@@ -25,7 +28,11 @@ const Recipes = () => {
         console.log(result);
     }
 
-    const handleAddRecipe = async () => {
+    const handleAddRecipe = () => {
+        navigate('/recipes/add');
+    };
+
+    const handleAddRecipeTest = async () => {
         const recipe: Recipe = {
             id: 9,
             name: 'Recipe Name',
@@ -80,11 +87,16 @@ const Recipes = () => {
             </Spinner>
         );
     }
-    else if (!recipes) {
+    else if (recipes === null) {
         return (
             <div>
                 <h1>Our Delicious Recipes!</h1>
-                <div>Error loading recipes</div>
+                <Toast className="d-inline-block m-1" bg="danger">
+                    <Toast.Header>
+                        <strong className="me-auto">Error</strong>
+                    </Toast.Header>
+                    <Toast.Body>There was an error loading the recipes. Please try again later.</Toast.Body>
+                </Toast>
             </div>
         );
     }
@@ -93,7 +105,8 @@ const Recipes = () => {
             <div>
                 <h1>Our Delicious Recipes!</h1>
                 <div>{renderRecipeCards()}</div>
-                <Button onClick={handleAddRecipe}>Add a Recipe</Button>
+                <Button onClick={() => handleAddRecipe()}>Add a Recipe</Button>
+                <Button onClick={() => handleAddRecipeTest()}>(Test) Add a Recipe</Button>
             </div>
         );
     }

@@ -1,9 +1,19 @@
 import { useState, useEffect } from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
-import { Recipe } from '../types/types';
+import { useNavigate } from 'react-router-dom';
+import { Recipe } from '../../types/types';
 
 const RecipeCard = (recipe: Recipe) => {
+    const navigate = useNavigate();
     const [mealType, setMealType] = useState<string>('');
+
+    useEffect(() => {
+        getMealType();
+    });
+
+    const handleViewRecipe = (recipeId: number) => {
+        navigate(`/recipes/${recipeId}`);
+    };
 
     const getMealType = () => {
         if (recipe.mealType === 0) {
@@ -14,10 +24,6 @@ const RecipeCard = (recipe: Recipe) => {
             setMealType('Dinner');
         }
     };
-
-    useEffect(() => {
-        getMealType();
-    }, );
 
     return (
         <Card style={{ width: '18rem' }}>
@@ -32,8 +38,7 @@ const RecipeCard = (recipe: Recipe) => {
                 <ListGroup.Item><b>Servings -</b> {recipe.servings}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
+                <Card.Link onClick={() => handleViewRecipe(recipe.id)}>View Recipe</Card.Link>
             </Card.Body>
         </Card>
     );

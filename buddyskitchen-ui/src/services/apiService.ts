@@ -56,6 +56,32 @@ export async function getAllRecipes() {
     }
 };
 
+export async function getRecipeById(id: number) {
+    try {
+        const { data, status } = await axios.get<Recipe>(
+            `${BASE_URL}/api/recipe/get?id=${id}`,
+            {
+                headers: {
+                    Accept: 'application/json',
+                },
+            },
+        );
+
+        return {
+            status,
+            message: 'Success',
+            data
+        };
+    } catch (error) {
+        console.error('Unexpected error: ', error);
+        return {
+            status: 500,
+            message: 'Unexpected error: ' + error,
+            data: null
+        };
+    }
+};
+
 export async function saveRecipe(recipe: Recipe) {
     try {
         const { data, status } = await axios.post<Recipe>(
