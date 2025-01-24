@@ -1,16 +1,27 @@
-import { useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { Button, Spinner } from 'react-bootstrap';
 import { getAllRecipes, saveRecipe } from '../services/apiService';
 import { Recipe } from '../types/types';
+import RecipeCard from './RecipeCard';
 
 const Recipes = () => {
+    const [recipes, setRecipes] = useState<Recipe[] | null>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
     useEffect(() => {
-        recipes();
+        getRecipes();
     }, []);
 
-    const recipes = async () => {
+    const getRecipes = async () => {
         const result = await getAllRecipes();
-        if (result.status !== 200) return;
+        if (result.status !== 200) {
+            setLoading(false);
+            return;
+        }
+
+        // set recipe list
+        setLoading(false);
+        setRecipes(result.data);
         console.log(result);
     }
 
@@ -55,12 +66,37 @@ const Recipes = () => {
         console.log(result);
     };
 
-    return (
-        <div>
-            <h1>Our Delicious Recipes!</h1>
-            <Button onClick={handleAddRecipe}>Add a Recipe</Button>
-        </div>
-    );
+    const renderRecipeCards = () => {
+        if (!recipes) return;
+        return recipes.map(recipe => {
+            return <RecipeCard key={recipe.id} {...recipe} />;
+        });
+    };
+
+    if (loading) {
+        return (
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        );
+    }
+    else if (!recipes) {
+        return (
+            <div>
+                <h1>Our Delicious Recipes!</h1>
+                <div>Error loading recipes</div>
+            </div>
+        );
+    }
+    else {
+        return (
+            <div>
+                <h1>Our Delicious Recipes!</h1>
+                <div>{renderRecipeCards()}</div>
+                <Button onClick={handleAddRecipe}>Add a Recipe</Button>
+            </div>
+        );
+    }
 }
 
 export default Recipes;
