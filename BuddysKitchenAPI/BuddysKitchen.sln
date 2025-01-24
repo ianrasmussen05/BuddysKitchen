@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuddysKitchen.Web", "BuddysKitchen.Web\BuddysKitchen.Web.csproj", "{E43897B6-59EE-4E1D-9094-2B60B812A1E4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{308C5DCE-DBF2-420C-97E6-ED0A6B874545} = {308C5DCE-DBF2-420C-97E6-ED0A6B874545}
+		{DFACEB32-2797-4E43-AFF0-962B06D76BD9} = {DFACEB32-2797-4E43-AFF0-962B06D76BD9}
+		{F75BEF10-1715-4C6A-9837-B59D0D9A9C2C} = {F75BEF10-1715-4C6A-9837-B59D0D9A9C2C}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuddysKitchen.Data", "BuddysKitchen.Data\BuddysKitchen.Data.csproj", "{DFACEB32-2797-4E43-AFF0-962B06D76BD9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A1F2A2DB-59E2-444C-8EF7-E645EA4EC50B} = {A1F2A2DB-59E2-444C-8EF7-E645EA4EC50B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuddysKitchen.Models", "BuddysKitchen.Models\BuddysKitchen.Models.csproj", "{308C5DCE-DBF2-420C-97E6-ED0A6B874545}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4AE17D10-5534-4E4A-878A-BF9B5EFA511A} = {4AE17D10-5534-4E4A-878A-BF9B5EFA511A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuddysKitchen.Core", "BuddysKitchen.Core\BuddysKitchen.Core.csproj", "{4AE17D10-5534-4E4A-878A-BF9B5EFA511A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuddysKitchen.Entities", "BuddysKitchen.Entities\BuddysKitchen.Entities.csproj", "{A1F2A2DB-59E2-444C-8EF7-E645EA4EC50B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4AE17D10-5534-4E4A-878A-BF9B5EFA511A} = {4AE17D10-5534-4E4A-878A-BF9B5EFA511A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuddysKitchen.Services", "BuddysKitchen.Services\BuddysKitchen.Services.csproj", "{F75BEF10-1715-4C6A-9837-B59D0D9A9C2C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{308C5DCE-DBF2-420C-97E6-ED0A6B874545} = {308C5DCE-DBF2-420C-97E6-ED0A6B874545}
+		{4AE17D10-5534-4E4A-878A-BF9B5EFA511A} = {4AE17D10-5534-4E4A-878A-BF9B5EFA511A}
+		{A1F2A2DB-59E2-444C-8EF7-E645EA4EC50B} = {A1F2A2DB-59E2-444C-8EF7-E645EA4EC50B}
+		{DFACEB32-2797-4E43-AFF0-962B06D76BD9} = {DFACEB32-2797-4E43-AFF0-962B06D76BD9}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E43897B6-59EE-4E1D-9094-2B60B812A1E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E43897B6-59EE-4E1D-9094-2B60B812A1E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E43897B6-59EE-4E1D-9094-2B60B812A1E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E43897B6-59EE-4E1D-9094-2B60B812A1E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFACEB32-2797-4E43-AFF0-962B06D76BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFACEB32-2797-4E43-AFF0-962B06D76BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFACEB32-2797-4E43-AFF0-962B06D76BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFACEB32-2797-4E43-AFF0-962B06D76BD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{308C5DCE-DBF2-420C-97E6-ED0A6B874545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{308C5DCE-DBF2-420C-97E6-ED0A6B874545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{308C5DCE-DBF2-420C-97E6-ED0A6B874545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{308C5DCE-DBF2-420C-97E6-ED0A6B874545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE17D10-5534-4E4A-878A-BF9B5EFA511A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE17D10-5534-4E4A-878A-BF9B5EFA511A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE17D10-5534-4E4A-878A-BF9B5EFA511A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE17D10-5534-4E4A-878A-BF9B5EFA511A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1F2A2DB-59E2-444C-8EF7-E645EA4EC50B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1F2A2DB-59E2-444C-8EF7-E645EA4EC50B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1F2A2DB-59E2-444C-8EF7-E645EA4EC50B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1F2A2DB-59E2-444C-8EF7-E645EA4EC50B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F75BEF10-1715-4C6A-9837-B59D0D9A9C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75BEF10-1715-4C6A-9837-B59D0D9A9C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75BEF10-1715-4C6A-9837-B59D0D9A9C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75BEF10-1715-4C6A-9837-B59D0D9A9C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+@BuddysKitchen_HostAddress = http://localhost:5117
+
+GET {{BuddysKitchen_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
