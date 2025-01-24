@@ -33,7 +33,7 @@ const RecipeCard = (recipe: Recipe) => {
                 <Card.Text>{recipe.description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
-                <ListGroup.Item><b>Cuisine -</b> {recipe.cuisineId}</ListGroup.Item>
+                <ListGroup.Item><b>Cuisine -</b> {recipe.cuisine?.name}</ListGroup.Item>
                 <ListGroup.Item><b>Meal Type -</b> {mealType}</ListGroup.Item>
                 <ListGroup.Item><b>Servings -</b> {recipe.servings}</ListGroup.Item>
             </ListGroup>

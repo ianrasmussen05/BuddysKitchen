@@ -15,6 +15,7 @@ namespace BuddysKitchen.Models
         public string? Description { get; set; }
         public string? Servings { get; set; }
         public MealType? MealType { get; set; }
+        public CuisineModel? Cuisine { get; set; }
         public long? CuisineId { get; set; }
 
         public List<RecipeIngredientModel> RecipeIngredients { get; set; }

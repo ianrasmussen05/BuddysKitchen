@@ -39,7 +39,11 @@ const Recipes = () => {
             description: 'Recipe Description',
             servings: 'Recipe Servings',
             mealType: 0,
-            cuisineId: 1,
+            cuisineId: 0,
+            cuisine: {
+                id: 0,
+                name: 'Medeterranean'
+            },
             recipeIngredients: [
                 {
                     id: 18,

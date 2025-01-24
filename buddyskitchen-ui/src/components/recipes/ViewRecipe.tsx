@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Form, Spinner, Toast } from 'react-bootstrap';
+import { Table, Spinner, Toast } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { Recipe } from '../../types/types';
 import { getRecipeById } from '../../services/apiService';
@@ -50,28 +50,35 @@ const ViewRecipe = () => {
         return (
             <div>
                 <h1>View Recipe</h1>
-                <table>
-                    <tr>
-                        <th>Name</th>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
                         <td>{recipe.name}</td>
                     </tr>
                     <tr>
-                        <th>Description</th>
+                            <th>Description</th>
                         <td>{recipe.description}</td>
                     </tr>
                     <tr>
-                        <th>Servings</th>
+                            <th>Servings</th>
                         <td>{recipe.servings}</td>
                     </tr>
                     <tr>
-                        <th>Meal Type</th>
-                        <td>{recipe.mealType}</td>
-                    </tr>
-                    <tr>
-                        <th>Cuisine</th>
-                        <td>{recipe.cuisineId}</td>
-                    </tr>
-                </table>
+                            <th>Meal Type</th>
+                            <th>Cuisine</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{recipe.name}</td>
+                            <td>{recipe.description}</td>
+                            <td>{recipe.servings}</td>
+                            <td>{recipe.mealType}</td>
+                            <td>{recipe.cuisine ? recipe.cuisine.name : ''}</td>
+                        </tr>
+                    </tbody>
+                </Table>
             </div>
         );
     }

@@ -166,7 +166,13 @@ namespace BuddysKitchen.Services
         /// <param name="model"></param>
         /// <param name="dbItem"></param>
         private static void Map(RecipeModel model, Recipe dbItem)
-        {            
+        {
+            if (dbItem.CuisineId != null)
+            {
+                model.CuisineId = dbItem.CuisineId;
+                model.Cuisine = dbItem.Cuisine.Copy<Cuisine, CuisineModel>();
+            }
+
             if (dbItem.RecipeIngredients.Count != 0)
             {
                 model.RecipeIngredients.Clear(); // clear before adding
@@ -216,7 +222,12 @@ namespace BuddysKitchen.Services
             dbItem.Description = model.Description;
             dbItem.Servings = model.Servings;
             dbItem.MealType = model.MealType;
-            dbItem.CuisineId = model.CuisineId;
+
+            if (model.CuisineId != null)
+            {
+                dbItem.CuisineId = model.CuisineId;
+                dbItem.Cuisine = model.Cuisine.Copy<CuisineModel, Cuisine>();
+            }
 
             // Update ReciperIngredients
             dbItem.RecipeIngredients.Clear();

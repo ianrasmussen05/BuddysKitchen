@@ -1,3 +1,8 @@
+export interface Cuisine {
+    id: number;
+    name: string;
+};
+
 export interface Ingredient {
     id: number;
     name: string;
@@ -38,6 +43,7 @@ export interface Recipe {
     servings: string | null;
     mealType: number | null;
     cuisineId: number | null;
+    cuisine: Cuisine | null;
     recipeIngredients: RecipeIngredient[];
     recipeDirections: RecipeDirection[];
 };
