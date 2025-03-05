@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Table, Spinner, Toast } from 'react-bootstrap';
+import { Card, Spinner, Toast, Container, Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { Recipe } from '../../types/types';
 import { getRecipeById } from '../../services/apiService';
+import IngredientCard from './IngredientCard';
 
 const ViewRecipe = () => {
     const { recipeId } = useParams<{ recipeId: string }>();
@@ -29,6 +30,13 @@ const ViewRecipe = () => {
         console.log(result);
     };
 
+    const renderIngredientCards = () => {
+        if (recipe?.recipeIngredients.length === 0) return;
+        return recipe?.recipeIngredients.map(ingredient => {
+            return <IngredientCard key={ingredient.id} {...ingredient} />;
+        });
+    };
+
     if (loading) {
         return (
             <Spinner animation="border" role="status">
@@ -48,38 +56,32 @@ const ViewRecipe = () => {
         );
     } else {
         return (
-            <div>
-                <h1>View Recipe</h1>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                        <td>{recipe.name}</td>
-                    </tr>
-                    <tr>
-                            <th>Description</th>
-                        <td>{recipe.description}</td>
-                    </tr>
-                    <tr>
-                            <th>Servings</th>
-                        <td>{recipe.servings}</td>
-                    </tr>
-                    <tr>
-                            <th>Meal Type</th>
-                            <th>Cuisine</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{recipe.name}</td>
-                            <td>{recipe.description}</td>
-                            <td>{recipe.servings}</td>
-                            <td>{recipe.mealType}</td>
-                            <td>{recipe.cuisine ? recipe.cuisine.name : ''}</td>
-                        </tr>
-                    </tbody>
-                </Table>
-            </div>
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col md="8">
+                        <Card className="mt-4">
+                            <Card.Header as="h5">{recipe.name}</Card.Header>
+                            <Card.Body>
+                                <Card.Text>
+                                    <strong>Description:</strong> {recipe.description}
+                                </Card.Text>
+                                <Card.Text>
+                                    <strong>Servings:</strong> {recipe.servings}
+                                </Card.Text>
+                                <Card.Text>
+                                    <strong>Meal Type:</strong> {recipe.mealType}
+                                </Card.Text>
+                                <Card.Text>
+                                    <strong>Cuisine:</strong> {recipe.cuisine ? recipe.cuisine.name : 'N/A'}
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Footer>
+                                {renderIngredientCards()}
+                            </Card.Footer>                        
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 };

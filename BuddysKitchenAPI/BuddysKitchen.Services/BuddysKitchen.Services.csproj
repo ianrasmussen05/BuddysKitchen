@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.23.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BuddysKitchen.Data\BuddysKitchen.Data.csproj" />
     <ProjectReference Include="..\BuddysKitchen.Models\BuddysKitchen.Models.csproj" />
   </ItemGroup>

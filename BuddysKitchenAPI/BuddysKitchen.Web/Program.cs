@@ -18,6 +18,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
 
 // Add services
 builder.Services.AddScoped<IDataContext, DataContext>();
@@ -25,6 +26,7 @@ builder.Services.AddScoped<IRecipeService, RecipeService>();
 builder.Services.AddScoped<IIngredientService, IngredientService>();
 builder.Services.AddScoped<IDirectionService, DirectionService>();
 builder.Services.AddScoped<ICuisineService, CuisineService>();
+builder.Services.AddScoped<IStorageService, StorageService>();
 
 // Add CORS policy to allow requests from localhost:3000
 builder.Services.AddCors(options =>

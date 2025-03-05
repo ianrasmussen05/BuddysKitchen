@@ -108,3 +108,33 @@ export async function saveRecipe(recipe: Recipe) {
         };
     }
 };
+
+export async function getImage(containerName: string, blobName: string) {
+    try {
+        const { data, status } = await axios.get<string>(
+            `${BASE_URL}/api/blob/get`,
+            {
+                params: {
+                    containerName: containerName,
+                    blobName: blobName
+                },
+                headers: {
+                    Accept: 'application/json',
+                },
+            },
+        );
+
+        return {
+            status,
+            message: 'Success',
+            data
+        };
+    } catch (error) {
+        console.error('Unexpected error: ', error);
+        return {
+            status: 500,
+            message: 'Unexpected error: ' + error,
+            data: null
+        };
+    }
+};
