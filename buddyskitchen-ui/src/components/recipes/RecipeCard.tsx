@@ -2,27 +2,20 @@ import { useState, useEffect } from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { Recipe } from '../../types/types';
+import { getMealType } from '../../services/helperService';
 
 const RecipeCard = (recipe: Recipe) => {
     const navigate = useNavigate();
     const [mealType, setMealType] = useState<string>('');
 
     useEffect(() => {
-        getMealType();
-    });
+        if (recipe.mealType !== null) {
+            setMealType(getMealType(recipe.mealType));
+        }
+    }, [recipe.mealType]);
 
     const handleViewRecipe = (recipeId: number) => {
         navigate(`/recipes/${recipeId}`);
-    };
-
-    const getMealType = () => {
-        if (recipe.mealType === 0) {
-            setMealType('Breakfast');
-        } else if (recipe.mealType === 1) {
-            setMealType('Lunch');
-        } else if (recipe.mealType === 2) {
-            setMealType('Dinner');
-        }
     };
 
     return (

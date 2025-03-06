@@ -3,11 +3,13 @@ import { Card, Spinner, Toast, Container, Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { Recipe } from '../../types/types';
 import { getRecipeById } from '../../services/apiService';
+import { getMealType } from '../../services/helperService';
 import IngredientCard from './IngredientCard';
 
 const ViewRecipe = () => {
     const { recipeId } = useParams<{ recipeId: string }>();
     const [recipe, setRecipe] = useState<Recipe | null>(null);
+    const [mealType, setMealType] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -28,6 +30,11 @@ const ViewRecipe = () => {
         setLoading(false);
         setRecipe(result.data);
         console.log(result);
+
+        // set meal type
+        if (result.data !== null && result.data.mealType !== null) {
+            setMealType(getMealType(result.data.mealType));
+        }
     };
 
     const renderIngredientCards = () => {
@@ -69,7 +76,7 @@ const ViewRecipe = () => {
                                     <strong>Servings:</strong> {recipe.servings}
                                 </Card.Text>
                                 <Card.Text>
-                                    <strong>Meal Type:</strong> {recipe.mealType}
+                                    <strong>Meal Type:</strong> {mealType}
                                 </Card.Text>
                                 <Card.Text>
                                     <strong>Cuisine:</strong> {recipe.cuisine ? recipe.cuisine.name : 'N/A'}
