@@ -68,7 +68,11 @@ namespace BuddysKitchen.Core
 
             if (propertyInfo != null)
             {
-                return (long)propertyInfo.GetValue(input);
+                var value = propertyInfo.GetValue(input);
+                if (value != null)
+                {
+                    return (long)value;
+                }
             }
 
             return 0;

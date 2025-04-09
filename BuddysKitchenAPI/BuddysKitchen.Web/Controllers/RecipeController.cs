@@ -8,12 +8,12 @@ namespace BuddysKitchen.Web.Controllers
     [ApiController]
     public class RecipeController : ControllerBase
     {
-        private readonly ILogger<RecipeController> _logger;
+        private readonly ILogger<RecipeController> Logger;
         private readonly IRecipeService RecipeService;
 
         public RecipeController(ILogger<RecipeController> logger, IRecipeService recipeService)
         {
-            _logger = logger;
+            Logger = logger;
             RecipeService = recipeService;
         }
 
@@ -27,7 +27,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'recipe/get-all': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'recipe/get-all': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -45,7 +45,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'recipe/get': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'recipe/get': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -63,7 +63,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'recipe/save': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'recipe/save': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -81,7 +81,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'recipe/delete': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'recipe/delete': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }

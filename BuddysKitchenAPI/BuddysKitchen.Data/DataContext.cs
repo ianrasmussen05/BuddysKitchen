@@ -9,6 +9,8 @@ namespace BuddysKitchen.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             foreach (var type in modelBuilder.Model.GetEntityTypes())
             {
                 type.SetTableName(type.DisplayName());
@@ -58,5 +60,6 @@ namespace BuddysKitchen.Data
         public DbSet<RecipeDirection> RecipeDirection { get; set; }
         public DbSet<Direction> Directions { get; set; }
         public DbSet<Cuisine> Cuisines { get; set; }
+        public DbSet<User> Users { get; set; }
     }
-}
+}   

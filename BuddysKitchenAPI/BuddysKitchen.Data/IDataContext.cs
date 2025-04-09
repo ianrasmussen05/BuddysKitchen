@@ -14,5 +14,6 @@ namespace BuddysKitchen.Data
         DbSet<RecipeDirection> RecipeDirection { get; set; }
         DbSet<Direction> Directions { get; set; }
         DbSet<Cuisine> Cuisines { get; set; }
+        DbSet<User> Users { get; set; }
     }
 }

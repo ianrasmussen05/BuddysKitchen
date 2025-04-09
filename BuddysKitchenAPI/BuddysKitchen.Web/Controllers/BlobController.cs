@@ -7,12 +7,12 @@ namespace BuddysKitchen.Web.Controllers
     [ApiController]
     public class BlobController : ControllerBase
     {
-        private readonly ILogger<CuisineController> _logger;
+        private readonly ILogger<CuisineController> Logger;
         private readonly IStorageService StorageService;
 
         public BlobController(ILogger<CuisineController> logger, IStorageService storageService)
         {
-            _logger = logger;
+            Logger = logger;
             StorageService = storageService;
         }
 
@@ -29,7 +29,22 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'recipe/get': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'recipe/get': {Message}", ex.Message);
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("upload", Name = "upload-blob")]
+        public async Task<IActionResult> Upload(string containerName, IFormFile file)
+        {
+            try
+            {
+                var result = await StorageService.UploadFile(containerName, file);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError("Error on webservice 'recipe/upload': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }

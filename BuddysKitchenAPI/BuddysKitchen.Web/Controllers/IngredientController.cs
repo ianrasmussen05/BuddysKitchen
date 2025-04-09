@@ -8,12 +8,12 @@ namespace BuddysKitchen.Web.Controllers
     [ApiController]
     public class IngredientController : ControllerBase
     {
-        private readonly ILogger<RecipeController> _logger;
+        private readonly ILogger<RecipeController> Logger;
         private readonly IIngredientService IngredientService;
 
         public IngredientController(ILogger<RecipeController> logger, IIngredientService ingredientService)
         {
-            _logger = logger;
+            Logger = logger;
             IngredientService = ingredientService;
         }
 
@@ -27,7 +27,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'ingredient/get-all': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'ingredient/get-all': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -45,7 +45,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'ingredient/get': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'ingredient/get': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -60,7 +60,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'ingredient/add': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'ingredient/add': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -78,7 +78,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'ingredient/update': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'ingredient/update': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -96,7 +96,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'ingredient/delete': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'ingredient/delete': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }

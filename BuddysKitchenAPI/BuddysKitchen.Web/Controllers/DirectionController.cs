@@ -8,12 +8,12 @@ namespace BuddysKitchen.Web.Controllers
     [ApiController]
     public class DirectionController : ControllerBase
     {
-        private readonly ILogger<DirectionController> _logger;
+        private readonly ILogger<DirectionController> Logger;
         private readonly IDirectionService DirectionService;
 
         public DirectionController(ILogger<DirectionController> logger, IDirectionService directionService)
         {
-            _logger = logger;
+            Logger = logger;
             DirectionService = directionService;
         }
 
@@ -27,7 +27,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'direction/get-all': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'direction/get-all': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -45,7 +45,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'direction/get': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'direction/get': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -60,7 +60,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'direction/add': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'direction/add': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -78,7 +78,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'direction/update': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'direction/update': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -96,7 +96,7 @@ namespace BuddysKitchen.Web.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error on webservice 'direction/delete': {Message}", ex.Message);
+                Logger.LogError("Error on webservice 'direction/delete': {Message}", ex.Message);
                 return BadRequest(ex.Message);
             }
         }

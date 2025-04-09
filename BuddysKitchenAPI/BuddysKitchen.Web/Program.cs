@@ -26,6 +26,7 @@ builder.Services.AddScoped<IRecipeService, RecipeService>();
 builder.Services.AddScoped<IIngredientService, IngredientService>();
 builder.Services.AddScoped<IDirectionService, DirectionService>();
 builder.Services.AddScoped<ICuisineService, CuisineService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStorageService, StorageService>();
 
 // Add CORS policy to allow requests from localhost:3000
@@ -53,7 +54,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowLocalhost3000");
 
 app.UseHttpsRedirection();
-
+//app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
