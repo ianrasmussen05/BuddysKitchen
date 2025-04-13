@@ -1,6 +1,5 @@
 ﻿using BuddysKitchen.Models;
 using BuddysKitchen.Services.Contracts;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuddysKitchen.Web.Controllers
