@@ -26,7 +26,7 @@ namespace BuddysKitchen.Web.Controllers
             {
                 var register = await UserService.RegisterUser(model);
                 if (register == null)
-                    return BadRequest("Email already exists");
+                    return Ok("Email already exists");
 
                 return Ok(register);
             }

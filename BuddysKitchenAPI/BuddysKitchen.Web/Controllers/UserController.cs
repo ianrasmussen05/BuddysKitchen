@@ -1,5 +1,6 @@
 ﻿using BuddysKitchen.Models;
 using BuddysKitchen.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuddysKitchen.Web.Controllers
@@ -17,6 +18,7 @@ namespace BuddysKitchen.Web.Controllers
             UserService = userService;
         }
 
+        [Authorize]
         [HttpGet("get", Name = "get-user")]
         public async Task<IActionResult> Get(string email)
         {
@@ -34,6 +36,7 @@ namespace BuddysKitchen.Web.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("get-all", Name = "get-all-users")]
         public async Task<IActionResult> GetAll()
         {
@@ -49,6 +52,7 @@ namespace BuddysKitchen.Web.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("add", Name = "add-user")]
         public async Task<IActionResult> Add(UserModel model)
         {
@@ -64,6 +68,7 @@ namespace BuddysKitchen.Web.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("update", Name = "update-user")]
         public async Task<IActionResult> Update(UserModel model)
         {
@@ -81,6 +86,7 @@ namespace BuddysKitchen.Web.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("delete", Name = "delete-user")]
         public async Task<IActionResult> Delete(string email)
         {

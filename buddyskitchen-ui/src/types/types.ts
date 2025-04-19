@@ -47,3 +47,23 @@ export interface Recipe {
     recipeIngredients: RecipeIngredient[];
     recipeDirections: RecipeDirection[];
 };
+
+export interface UserModel {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    role: string;
+};
+
+export interface RegisterUser {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+};
+
+export interface LoginUser {
+    email: string;
+    password: string;
+};

@@ -4,6 +4,8 @@ import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Recipes from './components/recipes/RecipePage';
 import About from './components/About';
+import Login from './components/Login';
+import Register from './components/Register';
 import ViewRecipe from './components/recipes/ViewRecipe';
 import EditRecipe from './components/recipes/EditRecipe';
 import AddRecipe from './components/recipes/AddRecipe';
@@ -35,6 +37,8 @@ function App() {
           <Route path="/recipes/:recipeId" element={<ViewRecipe />} />
           <Route path="/recipes/edit/:recipeId" element={<EditRecipe />} />
           <Route path="/recipes/add" element={<AddRecipe />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </Router>

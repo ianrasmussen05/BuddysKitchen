@@ -27,7 +27,9 @@ namespace BuddysKitchen.Web.Controllers
                 var token = await UserService.LoginUser(model);
                 if (token == null)
                     return Unauthorized("Invalid credentials.");
-                return Ok(new { token });
+                return Ok(new { 
+                    token
+                });
             }
             catch (Exception ex)
             {
