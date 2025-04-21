@@ -1,4 +1,5 @@
 ﻿using BuddysKitchen.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuddysKitchen.Web.Controllers
@@ -34,6 +35,7 @@ namespace BuddysKitchen.Web.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("upload", Name = "upload-blob")]
         public async Task<IActionResult> Upload(string containerName, IFormFile file)
         {

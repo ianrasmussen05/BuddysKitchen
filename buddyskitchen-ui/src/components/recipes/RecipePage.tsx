@@ -109,8 +109,8 @@ const Recipes = () => {
             <div>
                 <h1>Our Delicious Recipes!</h1>
                 <div>{renderRecipeCards()}</div>
-                <Button onClick={() => handleAddRecipe()}>Add a Recipe</Button>
-                <Button onClick={() => handleAddRecipeTest()}>(Test) Add a Recipe</Button>
+                <Button variant="primary" onClick={() => handleAddRecipe()}>Add a Recipe</Button>
+                <Button variant="primary" onClick={() => handleAddRecipeTest()}>(Test) Add a Recipe</Button>
             </div>
         );
     }

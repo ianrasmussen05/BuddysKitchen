@@ -1,5 +1,6 @@
 ﻿using BuddysKitchen.Models;
 using BuddysKitchen.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuddysKitchen.Web.Controllers
@@ -50,6 +51,7 @@ namespace BuddysKitchen.Web.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("save", Name = "save-recipe")]
         public async Task<IActionResult> Save(RecipeModel model)
         {
@@ -68,6 +70,7 @@ namespace BuddysKitchen.Web.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("delete", Name = "delete-recipe")]
         public async Task<IActionResult> Delete(long id)
         {

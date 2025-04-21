@@ -1,5 +1,6 @@
 ﻿using BuddysKitchen.Models;
 using BuddysKitchen.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuddysKitchen.Web.Controllers
@@ -50,6 +51,7 @@ namespace BuddysKitchen.Web.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("add", Name = "add-direction")]
         public async Task<IActionResult> Add(DirectionModel model)
         {
@@ -65,6 +67,7 @@ namespace BuddysKitchen.Web.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("update", Name = "update-direction")]
         public async Task<IActionResult> Update(DirectionModel model)
         {
@@ -83,6 +86,7 @@ namespace BuddysKitchen.Web.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("delete", Name = "delete-direction")]
         public async Task<IActionResult> Delete(long id)
         {

@@ -137,7 +137,7 @@ export async function register(registerModel: RegisterUser) {
     }
 }
 
-export async function login(loginModel: LoginUser) {
+export async function loginUser(loginModel: LoginUser) {
     try {
         const { data, status } = await axios.post<string>(
             `${BASE_URL}/api/login`,

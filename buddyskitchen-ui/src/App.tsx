@@ -10,6 +10,7 @@ import ViewRecipe from './components/recipes/ViewRecipe';
 import EditRecipe from './components/recipes/EditRecipe';
 import AddRecipe from './components/recipes/AddRecipe';
 import { getHealth } from './services/apiService';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   const [healthy, setHealth] = useState(false);
@@ -26,22 +27,24 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div className='App'>
-        <p>{healthy ? 'Healthy' : 'Not healthy'}</p>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/recipes" element={<Recipes />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/recipes/:recipeId" element={<ViewRecipe />} />
-          <Route path="/recipes/edit/:recipeId" element={<EditRecipe />} />
-          <Route path="/recipes/add" element={<AddRecipe />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className='App'>
+          <p>{healthy ? 'Healthy' : 'Not healthy'}</p>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/recipes" element={<Recipes />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/recipes/:recipeId" element={<ViewRecipe />} />
+            <Route path="/recipes/edit/:recipeId" element={<EditRecipe />} />
+            <Route path="/recipes/add" element={<AddRecipe />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
   
 }
